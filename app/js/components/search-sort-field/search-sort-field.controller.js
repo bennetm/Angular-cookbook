@@ -1,4 +1,4 @@
-angular.module('phonecatComponents')
+angular.module('phonecatComponents.searchSortField')
     .controller('SearchSortFieldCtrl', function ($scope) {
         var ctrl = this;
 

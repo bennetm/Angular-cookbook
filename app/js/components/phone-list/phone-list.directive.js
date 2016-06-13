@@ -1,13 +1,13 @@
-angular.module('phonecatComponents').directive('search-sort-io', function() {
+angular.module('phonecatComponents.phoneList').directive('phoneList', function() {
     return {
         scope: {},
-        controller: 'PhoneListCtrl',
+        controller: 'PhoneListController',
         controllerAs: 'ctrl',
         templateUrl: './js/components/phone-list/phone-list.html',
         bindToController: {
             inputUnorderedList: '&',
-            inputQuery: '&',
-            inputSortOrder: '&'
+            inputQuery: '=',
+            inputSortOrder: '='
         }
     }
 });

@@ -1,5 +1,5 @@
 
-angular.module('phonecatComponents')
+angular.module('phonecatComponents.searchSortField')
     .directive('searchSortField', function() {
         return {
             scope: {},
