@@ -1,0 +1,8 @@
+Search: <input type="search"
+               ng-model="ctrl.searchTerm"
+               ng-change="ctrl.onTermChange()">
+Sort by:
+<select ng-model="ctrl.sortOrder" ng-change="ctrl.onOrderChange()">
+    <option value="name">Alphabetical</option>
+    <option value="age">Newest</option>
+</select>

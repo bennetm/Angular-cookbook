@@ -1,0 +1,1 @@
+var componentsModule = angular.module('phonecatComponents', []);
