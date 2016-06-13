@@ -1,0 +1,1 @@
+var searchSortModule = angular.module('phonecatComponents.searchSortField', []);
