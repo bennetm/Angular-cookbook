@@ -3,7 +3,7 @@ angular.module('phonecatComponents.phoneDetail').directive('phoneDetails', funct
         scope: {},
         controller: 'PhoneDetailsController',
         controllerAs: 'ctrl',
-        templateUrl: './js/components/phone_details/phone_details.html',
+        templateUrl: './js/components/phone-detail/phone-detail.html',
         bindToController: {
             phone : '=',
             mainImageUrl : '=',
