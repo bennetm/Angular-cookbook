@@ -220,9 +220,9 @@ Requires a webserver that serves the application. See Running the app during dev
         app.js          --> the main application module
         controllers.js  --> application controllers
         directives.js   --> application directives
-        filters.js      --> custom angular filters
-        services.js     --> custom angular services
-        animations.js   --> hooks for running JQuery animations with ngAnimate
+        checkmark.filter.ts      --> custom angular filters
+        phone.ts     --> custom angular services
+        animations.module.ts   --> hooks for running JQuery animations with ngAnimate
       partials/         --> angular view partials (partial html templates) used by ngRoute
         partial1.html
         partial2.html
