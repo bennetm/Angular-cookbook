@@ -1,1 +1,0 @@
-var phoneDeatilModule = angular.module('phonecatComponents.phoneDetail', []);
