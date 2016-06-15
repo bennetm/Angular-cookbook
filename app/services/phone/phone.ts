@@ -4,7 +4,7 @@ phoneSvc.$inject = [
 ]
 
 export default function phoneSvc($resource: angular.resource.IResourceService) {
-        return $resource('phones/:phoneId.json', {}, {
+        return $resource('app/phones/:phoneId.json', {}, {
             query: {
                 method: 'GET',
                 params: {phoneId: 'phones'},

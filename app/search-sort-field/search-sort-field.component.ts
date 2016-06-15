@@ -14,7 +14,7 @@ export default class SearchComponent implements ng.IComponentOptions {
             initialSearchTerm: '<'
         };
         this.controller = SearchController;
-        this.templateUrl = 'search-sort-field/search-sort-field.html';
+        this.templateUrl = 'app/search-sort-field/search-sort-field.html';
     }
 
 }

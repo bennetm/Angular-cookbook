@@ -12,7 +12,7 @@ export default class PhoneDetailComponent implements ng.IComponentOptions {
             mainImageUrl : '<',
             onImageChange : '&'
         };
-        this.templateUrl = './phone-detail/phone-detail.html';
+        this.templateUrl = 'app/phone-detail/phone-detail.html';
         this.controller = PhoneDetailController;
     }
 

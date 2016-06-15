@@ -6,7 +6,7 @@ var PhoneListComponent = (function () {
             inputQuery: '<',
             inputSortOrder: '<'
         };
-        this.templateUrl = './phone-list/phone-list.html';
+        this.templateUrl = 'app/phone-list/phone-list.html';
     }
     return PhoneListComponent;
 }());
