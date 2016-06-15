@@ -6,10 +6,13 @@ import search_sort_field from './search-sort-field/search-sort-field.module';
 import phone_list from './phone-list/phone-list.module';
 import phone_detail from './phone-detail/phone-detail.module';
 import animations from './animations/animations.module';
-import { UpgradeAdapter } from '@angular/upgrade';
+import { HTTP_PROVIDERS } from '@angular/http';
+import { upgradeAdapter } from './services/upgrade-adaptor.module';
+
 
 
 configure.$inject = ['$locationProvider', '$routeProvider'];
+
 
 function configure($locationProvider: angular.ILocationProvider,
                     $routeProvider: angular.route.IRouteProvider) {
@@ -31,8 +34,8 @@ function configure($locationProvider: angular.ILocationProvider,
 
 var phonecatApp = angular.module('phonecatApp', [
     'ngRoute',
-    animations.name,
     phone.name,
+    animations.name,
     phone_list_layout.name,
     phone_detail_layout.name,
     search_sort_field.name,
@@ -45,5 +48,7 @@ var phonecatApp = angular.module('phonecatApp', [
 // Bootstrap the Angular 1.5 app
 //angular.bootstrap(document.documentElement, ['phonecatApp']);
 
-let upgradeAdapter = new UpgradeAdapter();
+/* */
+upgradeAdapter.addProvider(HTTP_PROVIDERS);
+
 upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);

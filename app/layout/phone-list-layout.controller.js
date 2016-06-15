@@ -1,8 +1,11 @@
 "use strict";
 var ListLayoutController = (function () {
-    function ListLayoutController(Phone) {
-        this.phones = Phone.query();
-        this.orderProp = 'name';
+    function ListLayoutController(PhoneSvc) {
+        var _this = this;
+        PhoneSvc.query().subscribe(function (phones) {
+            _this.phones = phones;
+        });
+        this.orderProp = 'age';
         this.query = '';
     }
     ListLayoutController.prototype.onNewSearchTerm = function (newSearchTerm) {

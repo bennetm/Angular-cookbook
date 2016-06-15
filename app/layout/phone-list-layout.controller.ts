@@ -1,3 +1,5 @@
+import {PhoneSvc} from "../services/phone/phone.service";
+
 export default class ListLayoutController {
 
     static $inject = ['PhoneSvc'];
@@ -6,9 +8,11 @@ export default class ListLayoutController {
     orderProp: string;
     query: string;
 
-    constructor(Phone: any) {
-        this.phones = Phone.query();
-        this.orderProp = 'name';
+    constructor(PhoneSvc: PhoneSvc) {
+        PhoneSvc.query().subscribe(phones => {
+            this.phones = phones;
+        });
+        this.orderProp = 'age';
         this.query = '';
     }
     onNewSearchTerm(newSearchTerm: string) {

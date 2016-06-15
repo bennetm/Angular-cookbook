@@ -7,7 +7,8 @@ var search_sort_field_module_1 = require('./search-sort-field/search-sort-field.
 var phone_list_module_1 = require('./phone-list/phone-list.module');
 var phone_detail_module_1 = require('./phone-detail/phone-detail.module');
 var animations_module_1 = require('./animations/animations.module');
-var upgrade_1 = require('@angular/upgrade');
+var http_1 = require('@angular/http');
+var upgrade_adaptor_module_1 = require('./services/upgrade-adaptor.module');
 configure.$inject = ['$locationProvider', '$routeProvider'];
 function configure($locationProvider, $routeProvider) {
     //$locationProvider.hashPrefix('!');
@@ -26,8 +27,8 @@ function configure($locationProvider, $routeProvider) {
 }
 var phonecatApp = angular.module('phonecatApp', [
     'ngRoute',
-    animations_module_1.default.name,
     phone_module_1.default.name,
+    animations_module_1.default.name,
     phone_list_layout_module_1.default.name,
     phone_detail_layout_module_1.default.name,
     search_sort_field_module_1.default.name,
@@ -38,6 +39,7 @@ var phonecatApp = angular.module('phonecatApp', [
     .config(configure);
 // Bootstrap the Angular 1.5 app
 //angular.bootstrap(document.documentElement, ['phonecatApp']);
-var upgradeAdapter = new upgrade_1.UpgradeAdapter();
-upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
+/* */
+upgrade_adaptor_module_1.upgradeAdapter.addProvider(http_1.HTTP_PROVIDERS);
+upgrade_adaptor_module_1.upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
 //# sourceMappingURL=main.js.map

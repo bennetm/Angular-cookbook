@@ -12,7 +12,7 @@ describe('PhoneCat App', function() {
   });
 
 
-  describe('Phone list view', function() {
+  describe('PhoneSvc list view', function() {
 
     beforeEach(function() {
       browser.get('app/index.html#/phones');
@@ -73,7 +73,7 @@ describe('PhoneCat App', function() {
   });
 
 
-  describe('Phone detail view', function() {
+  describe('PhoneSvc detail view', function() {
 
     beforeEach(function() {
       browser.get('app/index.html#/phones/nexus-s');
