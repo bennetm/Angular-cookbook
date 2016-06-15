@@ -221,7 +221,7 @@ Requires a webserver that serves the application. See Running the app during dev
         controllers.js  --> application controllers
         directives.js   --> application directives
         checkmark.filter.ts      --> custom angular filters
-        phone.ts     --> custom angular services
+        phone.service.ts     --> custom angular services
         animations.module.ts   --> hooks for running JQuery animations with ngAnimate
       partials/         --> angular view partials (partial html templates) used by ngRoute
         partial1.html

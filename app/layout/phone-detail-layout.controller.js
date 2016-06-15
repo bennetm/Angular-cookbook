@@ -1,8 +1,10 @@
 "use strict";
 var DetailLayoutController = (function () {
     function DetailLayoutController($routeParams, PhoneSvc) {
-        this.phone = PhoneSvc.get({ phoneId: $routeParams.phoneId });
-        //this.mainImageUrl = this.phone.images[0];
+        var _this = this;
+        PhoneSvc.get($routeParams.phoneId).subscribe((function (phone) {
+            _this.phone = phone;
+        }));
     }
     DetailLayoutController.prototype.setImage = function (url) {
         this.mainImageUrl = url;

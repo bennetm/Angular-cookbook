@@ -6,7 +6,7 @@ describe('service', function() {
   beforeEach(module('phonecatApp'));
 
   // Test service availability
-  it('check the existence of Phone factory', inject(function(Phone) {
+  it('check the existence of PhoneSvc factory', inject(function(Phone) {
       expect(Phone).toBeDefined();
     }));
 });
