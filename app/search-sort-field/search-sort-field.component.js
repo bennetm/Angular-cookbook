@@ -9,7 +9,7 @@ var SearchComponent = (function () {
             initialSearchTerm: '<'
         };
         this.controller = search_sort_field_controller_1.default;
-        this.templateUrl = 'search-sort-field/search-sort-field.html';
+        this.templateUrl = 'app/search-sort-field/search-sort-field.html';
     }
     return SearchComponent;
 }());

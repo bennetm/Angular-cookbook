@@ -7,7 +7,7 @@ var PhoneDetailComponent = (function () {
             mainImageUrl: '<',
             onImageChange: '&'
         };
-        this.templateUrl = './phone-detail/phone-detail.html';
+        this.templateUrl = 'app/phone-detail/phone-detail.html';
         this.controller = phone_detail_controller_1.default;
     }
     return PhoneDetailComponent;

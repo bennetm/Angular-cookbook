@@ -7,17 +7,18 @@ var search_sort_field_module_1 = require('./search-sort-field/search-sort-field.
 var phone_list_module_1 = require('./phone-list/phone-list.module');
 var phone_detail_module_1 = require('./phone-detail/phone-detail.module');
 var animations_module_1 = require('./animations/animations.module');
+var upgrade_1 = require('@angular/upgrade');
 configure.$inject = ['$locationProvider', '$routeProvider'];
 function configure($locationProvider, $routeProvider) {
     //$locationProvider.hashPrefix('!');
     $routeProvider.
         when('/phones', {
-        templateUrl: './layout/phone-list-layout.html',
+        templateUrl: 'app/layout/phone-list-layout.html',
         controller: 'ListLayoutController',
         controllerAs: 'ctrl'
     }).
         when('/phones/:phoneId', {
-        templateUrl: './layout/phone-detail-layout.html',
+        templateUrl: 'app/layout/phone-detail-layout.html',
         controller: 'DetailLayoutController',
         controllerAs: 'ctrl'
     }).
@@ -36,5 +37,7 @@ var phonecatApp = angular.module('phonecatApp', [
 ])
     .config(configure);
 // Bootstrap the Angular 1.5 app
-angular.bootstrap(document.documentElement, ['phonecatApp']);
-//# sourceMappingURL=app.config.js.map
+//angular.bootstrap(document.documentElement, ['phonecatApp']);
+var upgradeAdapter = new upgrade_1.UpgradeAdapter();
+upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
+//# sourceMappingURL=main.js.map

@@ -3,7 +3,7 @@ phoneSvc.$inject = [
     '$resource'
 ];
 function phoneSvc($resource) {
-    return $resource('phones/:phoneId.json', {}, {
+    return $resource('app/phones/:phoneId.json', {}, {
         query: {
             method: 'GET',
             params: { phoneId: 'phones' },
