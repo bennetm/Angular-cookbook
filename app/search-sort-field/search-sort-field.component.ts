@@ -1,23 +1,27 @@
-import SearchController from "./search-sort-field.controller";
+import {Component, EventEmitter, Injectable, Input, Output} from '@angular/core';
 
-export default class SearchComponent implements ng.IComponentOptions {
+@Component({
+    selector: 'search-sort-field',
+    templateUrl: '/app/search-sort-field/search-sort-field.template.html',
+})
+@Injectable()
+export default class SearchSortFieldComponent  {
 
-    public bindings: any;
-    public controller: any;
-    public templateUrl: string;
+    @Output() onOrderChanged = new EventEmitter<string>() ;
+    @Output() onQueryTermChanged = new EventEmitter<string>();
 
-    constructor() {
-        this.bindings = {
-            onSearchTermChange: '&',
-            onSortOrderChange: '&',
-            initialSortOrder : '<',
-            initialSearchTerm: '<'
-        };
-        this.controller = SearchController;
-        this.templateUrl = 'app/search-sort-field/search-sort-field.html';
+    _query: string = '';
+    _orderProp: string = '';
+
+    @Input()
+    set query(query: string) {
+        this._query = query.trim();
     }
+    @Input()
+    set orderProp(orderProp: string) {
+        this._orderProp = (orderProp && orderProp.trim()) || 'age';
+    }
+    get query() { return this._query}
+    get orderProp() { return this._orderProp }
 
 }
-
-
-

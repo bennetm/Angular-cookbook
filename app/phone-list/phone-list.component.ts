@@ -1,17 +1,53 @@
+import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
+import {PhoneData, PhoneSvc} from "../services/phone/phone.service";
 
-export default class PhoneListComponent implements ng.IComponentOptions {
+@Component({
+    selector: 'phone-list',
+    templateUrl: '/app/phone-list/phone-list.template.html'
+})
+export class PhoneListComponent {
 
-    public bindings: any;
-    public controller: any;
-    public templateUrl: string;
+    @Input() phones: PhoneData[];
+    @Input() query: string;
+    @Input() orderProp: string;
 
-    constructor() {
-        this.bindings = {
-            inputUnorderedList: '<',
-            inputQuery: '<',
-            inputSortOrder: '<'
-        }
-        this.templateUrl = 'app/phone-list/phone-list.html';
+    getPhones(): PhoneData[] {
+        return this.sortPhones(this.filterPhones(this.phones));
     }
-
+    private filterPhones(phones: PhoneData[]) {
+        if (phones && this.query) {
+            return phones.filter(phone => {
+                let name = phone.name.toLowerCase();
+                let snippet = phone.snippet.toLowerCase();
+                return name.indexOf(this.query) >= 0 || snippet.indexOf(this.query) >= 0;
+            });
+        }
+        return phones;
+    }
+    private sortPhones(phones: PhoneData[]) {
+        if (phones && this.orderProp) {
+            return phones
+                .slice(0) // Make a copy
+                .sort((a, b) => {
+                    if (a[this.orderProp] < b[this.orderProp]) {
+                        return -1;
+                    } else if ([b[this.orderProp] < a[this.orderProp]]) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                });
+        }
+        return phones;
+    }
+    /*ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+        let log: string[] = [];
+        for (let propName in changes) {
+            let changedProp = changes[propName];
+            let from = JSON.stringify(changedProp.previousValue);
+            let to =   JSON.stringify(changedProp.currentValue);
+            log.push( `${propName} changed from ${from} to ${to}`);
+        }
+        console.log(log.join( ' '));
+    }*/
 }

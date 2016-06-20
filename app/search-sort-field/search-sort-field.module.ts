@@ -1,5 +1,7 @@
-import SearchComponent from './search-sort-field.component';
+import { upgradeAdapter } from '../services/upgrade-adaptor.module';
+import SearchSortFieldComponent from "./search-sort-field.component";
+
 
 export default angular.module('phonecat.components.search', [])
-    .component('searchSortField', new SearchComponent());
-
+    .directive('searchSortField',
+        <angular.IDirectiveFactory> upgradeAdapter.downgradeNg2Component(SearchSortFieldComponent));
