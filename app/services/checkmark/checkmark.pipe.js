@@ -9,25 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/map');
-var PhoneSvc = (function () {
-    function PhoneSvc(http) {
-        this.http = http;
+var CheckmarkPipe = (function () {
+    function CheckmarkPipe() {
     }
-    PhoneSvc.prototype.query = function () {
-        return this.http.get("app/phones/phones.json")
-            .map(function (res) { return res.json(); });
+    CheckmarkPipe.prototype.transform = function (input) {
+        return input ? '\u2713' : '\u2718';
     };
-    PhoneSvc.prototype.getPhoneDetail = function (id) {
-        return this.http.get("app/phones/" + id + ".json")
-            .map(function (res) { return res.json(); });
-    };
-    PhoneSvc = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], PhoneSvc);
-    return PhoneSvc;
+    CheckmarkPipe = __decorate([
+        core_1.Pipe({ name: 'checkmark' }), 
+        __metadata('design:paramtypes', [])
+    ], CheckmarkPipe);
+    return CheckmarkPipe;
 }());
-exports.PhoneSvc = PhoneSvc;
-//# sourceMappingURL=phone.service.js.map
+exports.CheckmarkPipe = CheckmarkPipe;
+//# sourceMappingURL=checkmark.pipe.js.map

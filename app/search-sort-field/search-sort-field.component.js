@@ -19,7 +19,8 @@ var SearchSortFieldComponent = (function () {
     Object.defineProperty(SearchSortFieldComponent.prototype, "query", {
         get: function () { return this._query; },
         set: function (query) {
-            this._query = query.trim();
+            this._query = (query && query.trim()) || '';
+            this.onQueryTermChanged.emit(this._query);
         },
         enumerable: true,
         configurable: true
@@ -28,6 +29,7 @@ var SearchSortFieldComponent = (function () {
         get: function () { return this._orderProp; },
         set: function (orderProp) {
             this._orderProp = (orderProp && orderProp.trim()) || 'age';
+            this.onOrderChanged.emit(this._orderProp);
         },
         enumerable: true,
         configurable: true
@@ -53,7 +55,7 @@ var SearchSortFieldComponent = (function () {
     SearchSortFieldComponent = __decorate([
         core_1.Component({
             selector: 'search-sort-field',
-            templateUrl: '/app/search-sort-field/search-sort-field.template.html',
+            templateUrl: 'app/search-sort-field/search-sort-field.template.html',
         }),
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

@@ -16,36 +16,26 @@ var PhoneListLayoutComponent = (function () {
     function PhoneListLayoutComponent(phone) {
         var _this = this;
         this.phone = phone;
+        this.query = '';
+        this.orderProp = 'name';
         phone.query().subscribe(function (phones) {
             _this.phones = phones;
         });
-        this.query = '';
-        this.orderProp = 'name';
     }
     PhoneListLayoutComponent.prototype.onNewSearchTerm = function ($event) {
-        var _this = this;
         this.query = $event;
-        this.phone.query().subscribe(function (phones) {
-            _this.phones = phones;
-        });
-        console.log("Parent comp " + $event);
     };
     ;
     PhoneListLayoutComponent.prototype.onNewSortOrder = function ($event) {
-        var _this = this;
         this.orderProp = $event;
-        this.phone.query().subscribe(function (phones) {
-            _this.phones = phones;
-        });
-        //console.log("Parent comp " + $event);
     };
     ;
     PhoneListLayoutComponent.$inject = ['PhoneSvc'];
     PhoneListLayoutComponent = __decorate([
         core_1.Component({
             selector: 'phone-list-layout',
-            templateUrl: '/app/phone-list-layout/phone-list-layout.template.html',
-            directives: [phone_list_component_1.PhoneListComponent, search_sort_field_component_1.default]
+            templateUrl: 'app/phone-list-layout/phone-list-layout.template.html',
+            directives: [search_sort_field_component_1.default, phone_list_component_1.PhoneListComponent]
         }),
         core_1.Injectable(), 
         __metadata('design:paramtypes', [phone_service_1.PhoneSvc])

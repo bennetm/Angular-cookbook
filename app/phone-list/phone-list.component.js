@@ -17,15 +17,29 @@ var PhoneListComponent = (function () {
     };
     PhoneListComponent.prototype.filterPhones = function (phones) {
         var _this = this;
+        if (!this.query || !phones.length) {
+            return phones;
+        }
+        var phonesCpy = [];
+        phones.forEach(function (arrayItem) {
+            if (arrayItem.name.toLowerCase().indexOf(_this.query.toLowerCase()) >= 0 ||
+                arrayItem.snippet.toLowerCase().indexOf(_this.query.toLowerCase()) >= 0) {
+                phonesCpy.push(arrayItem);
+            }
+        });
+        return phonesCpy;
+    };
+    /*private filterPhones(phones: IPhoneData[]) {
         if (phones && this.query) {
-            return phones.filter(function (phone) {
-                var name = phone.name.toLowerCase();
-                var snippet = phone.snippet.toLowerCase();
-                return name.indexOf(_this.query) >= 0 || snippet.indexOf(_this.query) >= 0;
+            return phones.filter(phone => {
+                let name = phone.name.toLowerCase();
+                let snippet = phone.snippet.toLowerCase();
+                let searchTerm = this.query.toLowerCase();
+                return name.indexOf(this.query) >= 0 || snippet.indexOf(this.query) >= 0;
             });
         }
         return phones;
-    };
+    }*/
     PhoneListComponent.prototype.sortPhones = function (phones) {
         var _this = this;
         if (phones && this.orderProp) {
@@ -60,8 +74,9 @@ var PhoneListComponent = (function () {
     PhoneListComponent = __decorate([
         core_1.Component({
             selector: 'phone-list',
-            templateUrl: '/app/phone-list/phone-list.template.html'
-        }), 
+            templateUrl: 'app/phone-list/phone-list.template.html'
+        }),
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
     ], PhoneListComponent);
     return PhoneListComponent;
