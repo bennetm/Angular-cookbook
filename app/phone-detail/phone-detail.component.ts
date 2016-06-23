@@ -1,19 +1,21 @@
-import PhoneDetailController from './phone-detail.controller';
+import { Component,Input, Output, EventEmitter, Injectable } from '@angular/core';
+import { CheckmarkPipe } from '../services/checkmark/checkmark.pipe';
 
-export default class PhoneDetailComponent implements ng.IComponentOptions {
+@Component({
+    selector: 'phone-detail',
+    templateUrl: 'app/phone-detail/phone-detail.template.html',
+    pipes: [ CheckmarkPipe ]
+})
+@Injectable()
+export class PhoneDetailComponent {
+    
+    @Output() onImageChange = new EventEmitter<string>() ;
+    
+    @Input() phone ;
+    @Input() mainImageUrl: string;
 
-    public bindings: any;
-    public controller: any;
-    public templateUrl: string;
-
-    constructor() {
-        this.bindings = {
-            phone : '<',
-            mainImageUrl : '<',
-            onImageChange : '&'
-        };
-        this.templateUrl = 'app/phone-detail/phone-detail.html';
-        this.controller = PhoneDetailController;
+    setImage(imageUrl: string) {
+        this.mainImageUrl = imageUrl;
+        this.onImageChange.emit(imageUrl);
     }
-
 }

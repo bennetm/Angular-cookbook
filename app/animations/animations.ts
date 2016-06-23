@@ -1,4 +1,4 @@
-export default function animate () {
+export function animate () {
     var animateUp = function(element, className, done) {
         if(className != 'active') {
             return;
@@ -19,7 +19,7 @@ export default function animate () {
                 element.stop();
             }
         };
-    }
+    };
 
     var animateDown = function(element, className, done) {
         if(className != 'active') {
@@ -40,7 +40,7 @@ export default function animate () {
                 element.stop();
             }
         };
-    }
+    };
 
     return {
         addClass: animateUp,

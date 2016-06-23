@@ -42,6 +42,5 @@ function animate() {
         removeClass: animateDown
     };
 }
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = animate;
+exports.animate = animate;
 //# sourceMappingURL=animations.js.map
