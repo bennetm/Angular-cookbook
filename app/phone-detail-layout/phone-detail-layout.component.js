@@ -8,16 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require('@angular/core');
+var router_deprecated_1 = require('@angular/router-deprecated');
 var phone_service_1 = require("../services/phone/phone.service");
 var phone_detail_component_1 = require("../phone-detail/phone-detail.component");
 var DetailLayoutComponent = (function () {
-    function DetailLayoutComponent($routeParams, phoneSvc) {
+    function DetailLayoutComponent(routeParams, phoneSvc) {
         var _this = this;
-        phoneSvc.getPhoneDetail($routeParams['phoneId']).subscribe(function (phone) {
+        phoneSvc.getPhoneDetail(routeParams.get('phoneId')).subscribe(function (phone) {
             _this.phone = phone;
             _this.mainImageUrl = phone.images[0];
         });
@@ -26,18 +24,15 @@ var DetailLayoutComponent = (function () {
         this.mainImageUrl = $event;
         //console.log(this.mainImageUrl);
     };
-    DetailLayoutComponent.$inject = ['$routeParams', 'PhoneSvc'];
     DetailLayoutComponent = __decorate([
         core_1.Component({
             selector: 'phone-detail-layout',
             templateUrl: 'app/phone-detail-layout/phone-detail-layout.template.html',
             directives: [phone_detail_component_1.PhoneDetailComponent]
-        }),
-        __param(0, core_1.Inject('$routeParams')), 
-        __metadata('design:paramtypes', [Object, phone_service_1.PhoneSvc])
+        }), 
+        __metadata('design:paramtypes', [router_deprecated_1.RouteParams, phone_service_1.PhoneSvc])
     ], DetailLayoutComponent);
     return DetailLayoutComponent;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = DetailLayoutComponent;
+exports.DetailLayoutComponent = DetailLayoutComponent;
 //# sourceMappingURL=phone-detail-layout.component.js.map

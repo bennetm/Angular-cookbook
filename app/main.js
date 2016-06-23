@@ -1,42 +1,15 @@
 "use strict";
-//import CheckmarkPipe from './services/checkmark/checkmark.pipe.module';
-var phone_module_1 = require('./services/phone/phone.module');
-var phone_list_layout_module_1 = require('./phone-list-layout/phone-list-layout.module');
-var phone_detail_layout_module_1 = require('./phone-detail-layout/phone-detail-layout.module');
-var search_sort_field_module_1 = require('./search-sort-field/search-sort-field.module');
-var phone_list_module_1 = require('./phone-list/phone-list.module');
-var phone_detail_module_1 = require('./phone-detail/phone-detail.module');
-var animations_module_1 = require('./animations/animations.module');
-var upgrade_adaptor_module_1 = require('./services/upgrade-adaptor.module');
-configure.$inject = ['$locationProvider', '$routeProvider'];
-function configure($locationProvider, $routeProvider) {
-    $locationProvider.hashPrefix('!');
-    $routeProvider.
-        when('/phones', {
-        template: '<phone-list-layout>loading... </phone-list-layout>',
-        controller: 'ListLayoutController',
-        controllerAs: 'ctrl'
-    }).
-        when('/phones/:phoneId', {
-        template: '<phone-detail-layout>loading..</phone-detail-layout>',
-        controller: 'DetailLayoutController',
-        controllerAs: 'ctrl'
-    }).
-        otherwise('/phones');
-}
-var phonecatApp = angular.module('phonecatApp', [
-    'ngRoute',
-    'ngAnimate',
-    phone_module_1.default.name,
-    animations_module_1.default.name,
-    phone_list_layout_module_1.default.name,
-    phone_detail_layout_module_1.default.name,
-    search_sort_field_module_1.default.name,
-    phone_list_module_1.default.name,
-    phone_detail_module_1.default.name,
-])
-    .config(configure);
-// Bootstrap the Angular 1.5 app
-//angular.bootstrap(document.documentElement, ['phonecatApp']);
-upgrade_adaptor_module_1.upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
+var common_1 = require('@angular/common');
+var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
+var http_1 = require('@angular/http');
+var router_deprecated_1 = require('@angular/router-deprecated');
+var app_component_1 = require('./app.component');
+var phone_service_1 = require("./services/phone/phone.service");
+platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
+    http_1.HTTP_PROVIDERS,
+    router_deprecated_1.ROUTER_PROVIDERS,
+    { provide: common_1.APP_BASE_HREF, useValue: '!' },
+    { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
+    phone_service_1.PhoneSvc
+]);
 //# sourceMappingURL=main.js.map

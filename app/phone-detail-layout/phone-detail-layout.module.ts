@@ -1,4 +1,4 @@
-import DetailLayoutComponent from "./phone-detail-layout.component";
+import { DetailLayoutComponent } from "./phone-detail-layout.component";
 import {upgradeAdapter} from "../services/upgrade-adaptor.module";
 
 upgradeAdapter.upgradeNg1Provider('$routeParams');

@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { RouteParams } from '@angular/router-deprecated';
 import {PhoneSvc, IPhoneData} from "../services/phone/phone.service";
 import {PhoneDetailComponent} from "../phone-detail/phone-detail.component";
 
@@ -7,14 +8,13 @@ import {PhoneDetailComponent} from "../phone-detail/phone-detail.component";
     templateUrl: 'app/phone-detail-layout/phone-detail-layout.template.html',
     directives: [PhoneDetailComponent]
 })
-export default class DetailLayoutComponent {
-    static $inject = ['$routeParams', 'PhoneSvc'];
+export class DetailLayoutComponent {
 
     public phone: IPhoneData;
     public mainImageUrl:string;
 
-    constructor(@Inject('$routeParams') $routeParams: angular.route.IRouteParamsService, phoneSvc: PhoneSvc) {
-        phoneSvc.getPhoneDetail($routeParams['phoneId']).subscribe(phone => {
+    constructor(routeParams: RouteParams, phoneSvc: PhoneSvc) {
+        phoneSvc.getPhoneDetail(routeParams.get('phoneId')).subscribe(phone => {
             this.phone = phone;
             this.mainImageUrl = phone.images[0];
         });

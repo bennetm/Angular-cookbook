@@ -30,7 +30,6 @@ var PhoneListLayoutComponent = (function () {
         this.orderProp = $event;
     };
     ;
-    PhoneListLayoutComponent.$inject = ['PhoneSvc'];
     PhoneListLayoutComponent = __decorate([
         core_1.Component({
             selector: 'phone-list-layout',

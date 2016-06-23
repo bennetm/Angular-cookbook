@@ -10,8 +10,6 @@ import SearchSortFieldComponent from "../search-sort-field/search-sort-field.com
 })
 @Injectable()
 export class PhoneListLayoutComponent {
-    
-    static $inject = ['PhoneSvc'];
 
     phones: IPhoneData[];
     query: string = '';
